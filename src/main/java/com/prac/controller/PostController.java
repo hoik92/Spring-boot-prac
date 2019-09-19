@@ -28,15 +28,17 @@ public class PostController {
     @GetMapping("/post/{id}")
     public Posts findById(@PathVariable("id") int id) throws Exception {
         Posts post = postService.findById(id);
-        System.out.println(post.getId());
-        System.out.println(post.getName());
-        System.out.println(post.getContent());
         return post;
     }
 
     @PostMapping("/post")
     public void create(@RequestBody Posts post) throws Exception {
         postService.insert(post);
+    }
+
+    @RequestMapping(value = "/post/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable("id") int id) throws Exception {
+        postService.delete(id);
     }
 
     @GetMapping("/test")
