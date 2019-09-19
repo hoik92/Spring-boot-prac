@@ -10,7 +10,7 @@ var postCreateView = Vue.component("PostCreate", {
     `,
     data() {
         return {
-            name: "아니",
+            name: "",
             content: ""
         }
     },
@@ -27,6 +27,9 @@ var postCreateView = Vue.component("PostCreate", {
                 }
             }).then(reponse => {
                 console.log('success');
+                this.name = "";
+                this.content = "";
+                that.$router.push("/post");
             })
         }
     }
